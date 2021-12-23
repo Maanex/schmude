@@ -9,6 +9,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 
 import me.maanex.schmude.Main;
 import me.maanex.schmude.common.Utils;
@@ -60,6 +61,11 @@ public abstract class CustomBlock implements CustomElement {
 
   protected void dropOnBreak(Block b, Player by, Class<? extends CustomItem> item) {
     this.dropOnBreak(b, by, CustomContent.getCustomItemInstance(item).asItemStack());
+  }
+
+  @Override
+  public void addRecipes(Recipe... recipes) {
+    CustomContent.addRecipes(recipes);
   }
 
   //

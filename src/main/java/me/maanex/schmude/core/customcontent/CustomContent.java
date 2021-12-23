@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Instrument;
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.Recipe;
 
 import me.maanex.schmude.Main;
 import me.maanex.schmude.core.customcontent.structs.CustomBlock;
@@ -56,6 +58,8 @@ public class CustomContent {
 
     if (element instanceof Listener)
       Main.instance.getServer().getPluginManager().registerEvents((Listener) element, Main.instance);
+    
+    element.init();
   }
 
   @SuppressWarnings("unchecked")
@@ -72,6 +76,11 @@ public class CustomContent {
       .filter(cls::isInstance)
       .findFirst()
       .orElse(null);
+  }
+
+  public static void addRecipes(Recipe... recipes) {
+    for (Recipe r : recipes)
+      Bukkit.addRecipe(r);
   }
 
 }

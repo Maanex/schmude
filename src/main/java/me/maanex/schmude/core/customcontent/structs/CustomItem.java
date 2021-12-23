@@ -4,6 +4,9 @@ import org.bukkit.Material;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
+import org.bukkit.inventory.RecipeChoice;
+import org.bukkit.inventory.RecipeChoice.ExactChoice;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.maanex.schmude.core.customcontent.CustomContent;
@@ -40,6 +43,10 @@ public abstract class CustomItem implements CustomElement {
     return out;
   }
 
+  public RecipeChoice asRecipeChoice() {
+    return new ExactChoice(asItemStack());
+  }
+
   //
 
   protected boolean isThisItem(ItemStack item) {
@@ -60,6 +67,11 @@ public abstract class CustomItem implements CustomElement {
     CustomContent
       .getCustomBlockInstance(block)
       .attemptPlayerPlacing(e);
+  }
+
+  @Override
+  public void addRecipes(Recipe... recipes) {
+    CustomContent.addRecipes(recipes);
   }
   
 }
