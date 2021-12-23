@@ -43,16 +43,16 @@ public class ItemsCommand implements CommandExecutor, GuiInteractions {
 
   private void fillInventoryWithCustomContent(Inventory inv, int page) {
     final int USEABLE_SLOTS = 9 * 5;
-    final int PAGE_COUNT = CustomContent.cusomItems.size() / USEABLE_SLOTS + 1;
+    final int PAGE_COUNT = CustomContent.customItems.size() / USEABLE_SLOTS + 1;
     if (page < 0) page = 0;
     if (page >= PAGE_COUNT) page = PAGE_COUNT - 1;
 
     for (int i = 0; i < USEABLE_SLOTS; i++) {
       int index = i + USEABLE_SLOTS * page;
-      if (index >= CustomContent.cusomItems.size()) {
+      if (index >= CustomContent.customItems.size()) {
         inv.setItem(i, null);
       } else {
-        ItemStack item = CustomContent.cusomItems.get(index).asItemStack();
+        ItemStack item = CustomContent.customItems.get(index).asItemStack();
         inv.setItem(i, item);
       }
     }

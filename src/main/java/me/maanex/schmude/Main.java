@@ -4,10 +4,13 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.maanex.schmude.commands.ItemsCommand;
+import me.maanex.schmude.content.blocks.DwayneBlock;
 import me.maanex.schmude.content.blocks.FleshBlock;
+import me.maanex.schmude.content.items.DwayneBlockItem;
 import me.maanex.schmude.content.items.FleshBlockItem;
 import me.maanex.schmude.core.customcontent.CustomContent;
 import me.maanex.schmude.core.gui.GuiHandler;
+import me.maanex.schmude.features.customcontent.BlockBreakingCycle;
 import me.maanex.schmude.features.customcontent.BlockChangeActions;
 import me.maanex.schmude.features.customcontent.PreventBlockDefaults;
 import me.maanex.schmude.features.customcontent.PreventItemDefaults;
@@ -51,11 +54,14 @@ public class Main extends JavaPlugin {
 
         /** FEATURE * Custom Content */
         m.registerEvents(new BlockChangeActions(), this);
+        m.registerEvents(new BlockBreakingCycle(), this);
         m.registerEvents(new PreventBlockDefaults(), this);
         m.registerEvents(new PreventItemDefaults(), this);
     }
 
     private void registerCustomContent() {
+        CustomContent.register(new DwayneBlock());
+        CustomContent.register(new DwayneBlockItem());
         CustomContent.register(new FleshBlock());
         CustomContent.register(new FleshBlockItem());
     }

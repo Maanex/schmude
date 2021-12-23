@@ -13,7 +13,7 @@ import me.maanex.schmude.core.customcontent.structs.CustomItem;
 public class FleshBlockItem extends CustomItem implements Listener {
   
   public FleshBlockItem() {
-    super(100, "fleshblock", Material.PAPER, "Fleischblock");
+    super(101, "fleshblock", Material.FLINT, "Fleischblock");
   }
 
   @EventHandler

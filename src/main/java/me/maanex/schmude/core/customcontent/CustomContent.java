@@ -37,19 +37,19 @@ public class CustomContent {
   //
 
   public final static List<CustomElement> allCustomElements = new ArrayList<>();
-  public final static List<CustomBlock> cusomBlocks = new ArrayList<>();
-  public final static List<CustomItem> cusomItems = new ArrayList<>();
-  public final static List<CustomTileEntity> customTileEntities = new ArrayList<>();
+  public final static Map<Integer, CustomBlock> customBlocks = new HashMap<>();
+  public final static Map<Integer, CustomItem> customItems = new HashMap<>();
+  public final static Map<Integer, CustomTileEntity> customTileEntities = new HashMap<>();
   
   public static void register(CustomElement element) {
     allCustomElements.add(element);
 
     if (element instanceof CustomBlock)
-      cusomBlocks.add((CustomBlock) element);
+      customBlocks.put(element.getId(), (CustomBlock) element);
     else if (element instanceof CustomItem)
-      cusomItems.add((CustomItem) element);
+      customItems.put(element.getId(), (CustomItem) element);
     else if (element instanceof CustomTileEntity)
-      customTileEntities.add((CustomTileEntity) element);
+      customTileEntities.put(element.getId(), (CustomTileEntity) element);
 
     if (element instanceof Listener)
       Main.instance.getServer().getPluginManager().registerEvents((Listener) element, Main.instance);
@@ -57,7 +57,15 @@ public class CustomContent {
 
   @SuppressWarnings("unchecked")
   public static <T extends CustomBlock> T getCustomBlockInstance(Class<T> cls) {
-    return (T) cusomBlocks.stream()
+    return (T) customBlocks.values().stream()
+      .filter(cls::isInstance)
+      .findFirst()
+      .orElse(null);
+  }
+
+  @SuppressWarnings("unchecked")
+  public static <T extends CustomItem> T getCustomItemInstance(Class<T> cls) {
+    return (T) customItems.values().stream()
       .filter(cls::isInstance)
       .findFirst()
       .orElse(null);

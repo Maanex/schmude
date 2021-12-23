@@ -1,8 +1,12 @@
 package me.maanex.schmude.core.customcontent.structs;
 
 import org.bukkit.Material;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import me.maanex.schmude.core.customcontent.CustomContent;
 
 public abstract class CustomItem implements CustomElement {
 
@@ -17,6 +21,14 @@ public abstract class CustomItem implements CustomElement {
     this.baseMaterial = baseMaterial;
     this.displayName = displayName;
   }
+
+  //
+
+  public int getId() {
+    return id;
+  }
+
+  //
 
   public ItemStack asItemStack() {
     ItemStack out = new ItemStack(this.baseMaterial);
@@ -39,6 +51,15 @@ public abstract class CustomItem implements CustomElement {
     if (meta.getCustomModelData() != this.id) return false;
 
     return true;
+  }
+
+  protected void placeOnInteract(PlayerInteractEvent e, Class<? extends CustomBlock> block) {
+    if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
+    if (!isThisItem(e.getItem())) return;
+
+    CustomContent
+      .getCustomBlockInstance(block)
+      .attemptPlayerPlacing(e);
   }
   
 }
