@@ -39,17 +39,20 @@ public class CustomContent {
   public final static List<CustomElement> allCustomElements = new ArrayList<>();
   public final static Map<Integer, CustomBlock> customBlocks = new HashMap<>();
   public final static Map<Integer, CustomItem> customItems = new HashMap<>();
+  public final static List<CustomItem> customItemsList = new ArrayList<>();
   public final static Map<Integer, CustomTileEntity> customTileEntities = new HashMap<>();
   
   public static void register(CustomElement element) {
     allCustomElements.add(element);
 
-    if (element instanceof CustomBlock)
+    if (element instanceof CustomBlock) {
       customBlocks.put(element.getId(), (CustomBlock) element);
-    else if (element instanceof CustomItem)
+    } else if (element instanceof CustomItem) {
       customItems.put(element.getId(), (CustomItem) element);
-    else if (element instanceof CustomTileEntity)
+      customItemsList.add((CustomItem) element);
+    } else if (element instanceof CustomTileEntity) {
       customTileEntities.put(element.getId(), (CustomTileEntity) element);
+    }
 
     if (element instanceof Listener)
       Main.instance.getServer().getPluginManager().registerEvents((Listener) element, Main.instance);

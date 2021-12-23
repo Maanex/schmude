@@ -76,11 +76,11 @@ public abstract class CustomBlock implements CustomElement {
     Block target = e.getClickedBlock().getRelative(e.getBlockFace());
     if (!target.isEmpty()) return;
 
-    if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE))
-      e.getItem().setAmount(e.getItem().getAmount() - 1);
-
     if (!Utils.getEntitiesOnBlock(target, en -> en instanceof LivingEntity).isEmpty())
       return;
+
+    if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE))
+      e.getItem().setAmount(e.getItem().getAmount() - 1);
 
     Bukkit.getScheduler().scheduleSyncDelayedTask(Main.instance, () -> {
       this.placeAt(target, e.getPlayer());
