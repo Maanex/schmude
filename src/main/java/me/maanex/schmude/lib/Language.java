@@ -1,4 +1,4 @@
-package me.maanex.schmude.common;
+package me.maanex.schmude.lib;
 
 public class Language {
   

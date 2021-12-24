@@ -11,11 +11,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.maanex.schmude.Main;
-import me.maanex.schmude.common.GuiItems;
 import me.maanex.schmude.core.customcontent.CustomContent;
 import me.maanex.schmude.core.gui.GuiHandler;
 import me.maanex.schmude.core.gui.GuiInstance;
 import me.maanex.schmude.core.gui.GuiInteractions;
+import me.maanex.schmude.lib.GuiItems;
 
 
 public class ItemsCommand implements CommandExecutor, GuiInteractions {

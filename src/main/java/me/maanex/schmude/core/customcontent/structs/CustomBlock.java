@@ -12,9 +12,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 
 import me.maanex.schmude.Main;
-import me.maanex.schmude.common.Utils;
 import me.maanex.schmude.core.customcontent.CustomContent;
 import me.maanex.schmude.core.customcontent.MushroomStates;
+import me.maanex.schmude.lib.Utils;
 
 public abstract class CustomBlock implements CustomElement {
 

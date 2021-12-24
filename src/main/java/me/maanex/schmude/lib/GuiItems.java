@@ -1,4 +1,4 @@
-package me.maanex.schmude.common;
+package me.maanex.schmude.lib;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

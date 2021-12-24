@@ -15,8 +15,8 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import me.maanex.schmude.Main;
-import me.maanex.schmude.common.Language;
 import me.maanex.schmude.core.customcontent.CustomContent;
+import me.maanex.schmude.lib.Language;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
