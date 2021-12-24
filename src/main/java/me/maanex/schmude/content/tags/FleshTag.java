@@ -33,7 +33,7 @@ public class FleshTag implements Tag<Material> {
 
   @Override
   public NamespacedKey getKey() {
-    return new NamespacedKey(Main.instance, "tag.flesh");
+    return new NamespacedKey(Main.instance, "tag." + getClass().getName().replace("Tag", "").toLowerCase());
   }
 
   @Override

@@ -34,7 +34,7 @@ public class AxesTag implements Tag<Material> {
 
   @Override
   public NamespacedKey getKey() {
-    return new NamespacedKey(Main.instance, "tag.trampleable");
+    return new NamespacedKey(Main.instance, "tag." + getClass().getName().replace("Tag", "").toLowerCase());
   }
 
   @Override
