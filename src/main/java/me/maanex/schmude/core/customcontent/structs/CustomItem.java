@@ -1,5 +1,8 @@
 package me.maanex.schmude.core.customcontent.structs;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Material;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -12,6 +15,28 @@ import org.bukkit.inventory.meta.ItemMeta;
 import me.maanex.schmude.core.customcontent.CustomContent;
 
 public abstract class CustomItem implements CustomElement {
+
+  private static final Map<Material, Integer> MATERIAL_INDEX_MAP;
+
+  static {
+    MATERIAL_INDEX_MAP = new HashMap<Material, Integer>();
+
+    MATERIAL_INDEX_MAP.put(Material.WOODEN_HOE, 101_000);
+    MATERIAL_INDEX_MAP.put(Material.STONE_HOE, 102_000);
+    MATERIAL_INDEX_MAP.put(Material.IRON_HOE, 103_000);
+    MATERIAL_INDEX_MAP.put(Material.GOLDEN_HOE, 104_000);
+    MATERIAL_INDEX_MAP.put(Material.DIAMOND_HOE, 105_000);
+    MATERIAL_INDEX_MAP.put(Material.NETHERITE_HOE, 106_000);
+
+    MATERIAL_INDEX_MAP.put(Material.WOODEN_PICKAXE, 111_000);
+    MATERIAL_INDEX_MAP.put(Material.STONE_PICKAXE, 112_000);
+    MATERIAL_INDEX_MAP.put(Material.IRON_PICKAXE, 113_000);
+    MATERIAL_INDEX_MAP.put(Material.GOLDEN_PICKAXE, 114_000);
+    MATERIAL_INDEX_MAP.put(Material.DIAMOND_PICKAXE, 115_000);
+    MATERIAL_INDEX_MAP.put(Material.NETHERITE_PICKAXE, 116_000);
+  }
+
+  //
 
   private int id;
   private String name;
@@ -28,23 +53,30 @@ public abstract class CustomItem implements CustomElement {
   //
 
   public int getId() {
+    if (MATERIAL_INDEX_MAP.containsKey(this.baseMaterial))
+      return MATERIAL_INDEX_MAP.get(this.baseMaterial) + id;
+
     return id;
   }
 
   //
 
   public ItemStack asItemStack() {
+    return asItemStack(false);
+  }
+
+  public ItemStack asItemStack(boolean noDisplayName) {
     ItemStack out = new ItemStack(this.baseMaterial);
     ItemMeta m = out.getItemMeta();
-    m.setLocalizedName("schmude.item." + this.name + ".name");
-    m.setDisplayName("§r" + displayName);
+    if (!noDisplayName)
+      m.setDisplayName("§r" + displayName);
     m.setCustomModelData(id);
     out.setItemMeta(m);
     return out;
   }
 
   public RecipeChoice asRecipeChoice() {
-    return new ExactChoice(asItemStack());
+    return new ExactChoice(asItemStack(true));
   }
 
   //

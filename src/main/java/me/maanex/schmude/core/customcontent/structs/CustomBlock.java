@@ -60,7 +60,9 @@ public abstract class CustomBlock implements CustomElement {
   }
 
   protected void dropOnBreak(Block b, Player by, Class<? extends CustomItem> item) {
-    this.dropOnBreak(b, by, CustomContent.getCustomItemInstance(item).asItemStack());
+    CustomItem instance = CustomContent.getCustomItemInstance(item);
+    if (instance != null)
+      this.dropOnBreak(b, by, instance.asItemStack());
   }
 
   @Override

@@ -27,7 +27,8 @@ public class ScythesLogic extends CustomLogic implements Listener {
     if (!e.getItem().getType().toString().endsWith("_HOE")) return;
     if (!e.getItem().hasItemMeta()) return;
     if (!e.getItem().getItemMeta().hasCustomModelData()) return;
-    if (e.getItem().getItemMeta().getCustomModelData() != 1) return;
+    int cmd = e.getItem().getItemMeta().getCustomModelData();
+    if (cmd < 100 || cmd >= 200) return;
 
     int unbreaking = e.getItem().getEnchantmentLevel(Enchantment.DURABILITY);
     Random r = new Random();
