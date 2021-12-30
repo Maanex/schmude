@@ -17,6 +17,7 @@ import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.maanex.schmude.core.customcontent.structs.CustomLogic;
+import me.maanex.schmude.features.nature.DropOnions;
 
 public class ScythesLogic extends CustomLogic implements Listener {
 
@@ -66,6 +67,8 @@ public class ScythesLogic extends CustomLogic implements Listener {
     l.getBlock().setType(m);
 
     l.getWorld().dropItemNaturally(l, s);
+    if (m.equals(Material.POTATOES))
+      DropOnions.dropPerhaps(l);
 
     return true;
   }

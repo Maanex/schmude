@@ -8,9 +8,10 @@ import me.maanex.schmude.content.blocks.DwayneBlock;
 import me.maanex.schmude.content.blocks.FleshBlock;
 import me.maanex.schmude.content.common.HammersLogic;
 import me.maanex.schmude.content.common.ScythesLogic;
-import me.maanex.schmude.content.items.DonerMeat;
-import me.maanex.schmude.content.items.DwayneBlockItem;
-import me.maanex.schmude.content.items.FleshBlockItem;
+import me.maanex.schmude.content.items.blocks.DwayneBlockItem;
+import me.maanex.schmude.content.items.blocks.FleshBlockItem;
+import me.maanex.schmude.content.items.food.DonerMeat;
+import me.maanex.schmude.content.items.food.Onion;
 import me.maanex.schmude.content.items.hammers.DiamondHammer;
 import me.maanex.schmude.content.items.hammers.GoldenHammer;
 import me.maanex.schmude.content.items.hammers.IronHammer;
@@ -28,6 +29,7 @@ import me.maanex.schmude.core.gui.GuiHandler;
 import me.maanex.schmude.features.customcontent.BlockBreakingCycle;
 import me.maanex.schmude.features.customcontent.BlockChangeActions;
 import me.maanex.schmude.features.mobgriefing.CreeperExplosions;
+import me.maanex.schmude.features.nature.DropOnions;
 import me.maanex.schmude.features.qol.PreventTrampling;
 import me.maanex.schmude.features.qol.SlowdownAxe;
 import me.maanex.schmude.features.snowballs.HitHandler;
@@ -84,6 +86,9 @@ public class Main extends JavaPlugin {
         /** FEATURE * Custom Content */
         m.registerEvents(new BlockChangeActions(), this);
         m.registerEvents(new BlockBreakingCycle(), this);
+
+        /** FEATURE * Nature */
+        m.registerEvents(new DropOnions(), this);
     }
 
     private void registerCustomContent() {
@@ -93,6 +98,7 @@ public class Main extends JavaPlugin {
         CustomContent.register(new FleshBlock());
         CustomContent.register(new FleshBlockItem());
         CustomContent.register(new DonerMeat());
+        CustomContent.register(new Onion());
 
         CustomContent.register(new ScythesLogic());
         CustomContent.register(new WoodenScythe());

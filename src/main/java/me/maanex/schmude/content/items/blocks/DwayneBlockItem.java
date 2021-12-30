@@ -1,4 +1,4 @@
-package me.maanex.schmude.content.items;
+package me.maanex.schmude.content.items.blocks;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
