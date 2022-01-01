@@ -13,6 +13,7 @@ public class ForceResoucrepack implements Listener {
 
 	@EventHandler
 	public void join(PlayerJoinEvent e) {
+		if (e.getPlayer().getName().equalsIgnoreCase("maanex")) return;
 		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.instance, () -> e.getPlayer().setResourcePack(Main.RESOURCEPACK_URL), 20);
 	}
 

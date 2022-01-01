@@ -16,14 +16,10 @@ import me.maanex.schmude.content.items.hammers.DiamondHammer;
 import me.maanex.schmude.content.items.hammers.GoldenHammer;
 import me.maanex.schmude.content.items.hammers.IronHammer;
 import me.maanex.schmude.content.items.hammers.NetheriteHammer;
-import me.maanex.schmude.content.items.hammers.StoneHammer;
-import me.maanex.schmude.content.items.hammers.WoodenHammer;
 import me.maanex.schmude.content.items.scythes.DiamondScythe;
 import me.maanex.schmude.content.items.scythes.GoldenScythe;
 import me.maanex.schmude.content.items.scythes.IronScythe;
 import me.maanex.schmude.content.items.scythes.NetheriteScythe;
-import me.maanex.schmude.content.items.scythes.StoneScythe;
-import me.maanex.schmude.content.items.scythes.WoodenScythe;
 import me.maanex.schmude.core.customcontent.CustomContent;
 import me.maanex.schmude.core.gui.GuiHandler;
 import me.maanex.schmude.features.customcontent.BlockBreakingCycle;
@@ -39,7 +35,7 @@ import me.maanex.schmude.features.technical.Serverlist;
 
 public class Main extends JavaPlugin {
 
-    public static final String RESOURCEPACK_URL = "https://cdn.discordapp.com/attachments/863176882975146034/926959362944172062/schmude.zip";
+    public static final String RESOURCEPACK_URL = "https://cdn.discordapp.com/attachments/863176882975146034/926977491787186266/schmude.zip";
 
     //
 
@@ -105,16 +101,12 @@ public class Main extends JavaPlugin {
         CustomContent.register(new Onion());
 
         CustomContent.register(new ScythesLogic());
-        CustomContent.register(new WoodenScythe());
-        CustomContent.register(new StoneScythe());
         CustomContent.register(new GoldenScythe());
         CustomContent.register(new IronScythe());
         CustomContent.register(new DiamondScythe());
         CustomContent.register(new NetheriteScythe());
 
         CustomContent.register(new HammersLogic());
-        CustomContent.register(new WoodenHammer());
-        CustomContent.register(new StoneHammer());
         CustomContent.register(new GoldenHammer());
         CustomContent.register(new IronHammer());
         CustomContent.register(new DiamondHammer());
