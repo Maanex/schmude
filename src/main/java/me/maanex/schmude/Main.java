@@ -39,6 +39,10 @@ import me.maanex.schmude.features.technical.Serverlist;
 
 public class Main extends JavaPlugin {
 
+    public static final String RESOURCEPACK_URL = "https://cdn.discordapp.com/attachments/863176882975146034/926959362944172062/schmude.zip";
+
+    //
+
     public static Main instance;
 
     public Main() {
