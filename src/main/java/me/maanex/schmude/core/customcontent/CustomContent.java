@@ -13,6 +13,7 @@ import me.maanex.schmude.Main;
 import me.maanex.schmude.core.customcontent.structs.CustomBlock;
 import me.maanex.schmude.core.customcontent.structs.CustomElement;
 import me.maanex.schmude.core.customcontent.structs.CustomItem;
+import me.maanex.schmude.core.customcontent.structs.CustomStructEntity;
 import me.maanex.schmude.core.customcontent.structs.CustomTileEntity;
 
 public class CustomContent {
@@ -22,6 +23,7 @@ public class CustomContent {
   public final static Map<Integer, CustomItem> customItems = new HashMap<>();
   public final static List<CustomItem> customItemsList = new ArrayList<>();
   public final static Map<Integer, CustomTileEntity> customTileEntities = new HashMap<>();
+  public final static Map<Integer, CustomStructEntity> customStructEntities = new HashMap<>();
   
   public static void register(CustomElement element) {
     allCustomElements.add(element);
@@ -33,6 +35,8 @@ public class CustomContent {
       customItemsList.add((CustomItem) element);
     } else if (element instanceof CustomTileEntity) {
       customTileEntities.put(element.getId(), (CustomTileEntity) element);
+    } else if (element instanceof CustomStructEntity) {
+      customStructEntities.put(element.getId(), (CustomStructEntity) element);
     }
 
     if (element instanceof Listener)

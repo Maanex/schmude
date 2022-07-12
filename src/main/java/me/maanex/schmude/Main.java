@@ -8,6 +8,7 @@ import me.maanex.schmude.content.blocks.DwayneBlock;
 import me.maanex.schmude.content.blocks.FleshBlock;
 import me.maanex.schmude.content.common.HammersLogic;
 import me.maanex.schmude.content.common.ScythesLogic;
+import me.maanex.schmude.content.entities.FairyStructEntity;
 import me.maanex.schmude.content.items.blocks.DwayneBlockItem;
 import me.maanex.schmude.content.items.blocks.FleshBlockItem;
 import me.maanex.schmude.content.items.food.DonerMeat;
@@ -20,7 +21,9 @@ import me.maanex.schmude.content.items.scythes.DiamondScythe;
 import me.maanex.schmude.content.items.scythes.GoldenScythe;
 import me.maanex.schmude.content.items.scythes.IronScythe;
 import me.maanex.schmude.content.items.scythes.NetheriteScythe;
+import me.maanex.schmude.content.tickhooks.FairySpawner;
 import me.maanex.schmude.core.customcontent.CustomContent;
+import me.maanex.schmude.core.customcontent.world.WorldEntityManager;
 import me.maanex.schmude.core.gui.GuiHandler;
 import me.maanex.schmude.features.customcontent.BlockBreakingCycle;
 import me.maanex.schmude.features.customcontent.BlockChangeActions;
@@ -35,7 +38,7 @@ import me.maanex.schmude.features.technical.Serverlist;
 
 public class Main extends JavaPlugin {
 
-    public static final String RESOURCEPACK_URL = "https://cdn.discordapp.com/attachments/863176882975146034/926977491787186266/schmude.zip";
+    public static final String RESOURCEPACK_URL = "https://cdn.discordapp.com/attachments/863176882975146034/926978152352337940/schmude-314121241.zip";
 
     //
 
@@ -50,6 +53,8 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         System.out.println("poggies");
+
+        WorldEntityManager.init();
 
         registerEventHandlers();
         registerCustomContent();
@@ -111,6 +116,12 @@ public class Main extends JavaPlugin {
         CustomContent.register(new IronHammer());
         CustomContent.register(new DiamondHammer());
         CustomContent.register(new NetheriteHammer());
+
+        // CustomContent.register(new FairyStructEntity());
+
+        //
+
+        // new FairySpawner().schedule();
     }
 
     private void registerCommands() {
