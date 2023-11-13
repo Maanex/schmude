@@ -29,9 +29,6 @@ public class CreeperExplosions implements Listener {
 	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onExplode(EntityExplodeEvent e) {
-		if (!e.getEntity().getWorld().getName().equalsIgnoreCase("world"))
-      return;
-
     e.setCancelled(true);
 
     for (Entity en : e.getEntity().getNearbyEntities(e.getYield() / 3, e.getYield() / 3, e.getYield() / 3)) {

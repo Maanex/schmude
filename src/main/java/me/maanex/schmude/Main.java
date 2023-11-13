@@ -17,11 +17,12 @@ import me.maanex.schmude.content.items.hammers.DiamondHammer;
 import me.maanex.schmude.content.items.hammers.GoldenHammer;
 import me.maanex.schmude.content.items.hammers.IronHammer;
 import me.maanex.schmude.content.items.hammers.NetheriteHammer;
+import me.maanex.schmude.content.items.misc.FairyInABottle;
 import me.maanex.schmude.content.items.scythes.DiamondScythe;
 import me.maanex.schmude.content.items.scythes.GoldenScythe;
 import me.maanex.schmude.content.items.scythes.IronScythe;
 import me.maanex.schmude.content.items.scythes.NetheriteScythe;
-import me.maanex.schmude.content.tickhooks.FairySpawner;
+import me.maanex.schmude.content.tickhooks.Enderdragon;
 import me.maanex.schmude.core.customcontent.CustomContent;
 import me.maanex.schmude.core.customcontent.world.WorldEntityManager;
 import me.maanex.schmude.core.gui.GuiHandler;
@@ -117,11 +118,15 @@ public class Main extends JavaPlugin {
         CustomContent.register(new DiamondHammer());
         CustomContent.register(new NetheriteHammer());
 
-        // CustomContent.register(new FairyStructEntity());
+        CustomContent.register(new FairyStructEntity());
+        CustomContent.register(new FairyInABottle());
 
         //
 
         // new FairySpawner().schedule();
+        Enderdragon dragon = new Enderdragon();
+        dragon.schedule();
+        getServer().getPluginManager().registerEvents(dragon, this);
     }
 
     private void registerCommands() {

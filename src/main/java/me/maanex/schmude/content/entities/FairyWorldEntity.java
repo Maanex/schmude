@@ -30,7 +30,14 @@ public class FairyWorldEntity extends CustomWorldEntity {
 	}
 	
 	private void render() {
-		getLocation().getWorld().spawnParticle(Particle.END_ROD, getLocation(), 1, 0, 0, 0, 0, null, true);
+		switch (this.state) {
+			case FLIGHT:
+				getLocation().getWorld().spawnParticle(Particle.END_ROD, getLocation(), 1, 0.1, 0.1, 0.1, 0, null, true);
+				return;
+			default:
+				getLocation().getWorld().spawnParticle(Particle.END_ROD, getLocation(), 1, 0, 0, 0, 0, null, true);
+				return;
+		}
 	}
 	
 	private void move(int tick) {
@@ -112,8 +119,14 @@ public class FairyWorldEntity extends CustomWorldEntity {
 		}
 		
 		this.getLocation().add(this.velocity);
-		while (!this.getLocation().getBlock().isPassable()) {
-			this.getLocation().subtract(this.velocity.clone().multiply(.1));
+
+		// Correct position
+		if (!this.getLocation().getBlock().isPassable()) {
+			Vector d = this.velocity.clone().multiply(.1);
+			int it = 0;
+
+			while (!this.getLocation().getBlock().isPassable() && it++ < 10)
+				this.getLocation().subtract(d);
 		}
 	}
 	

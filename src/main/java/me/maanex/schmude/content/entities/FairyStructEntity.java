@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -14,6 +15,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
 import me.maanex.schmude.content.entities.FairyWorldEntity.FairyBehaviourState;
+import me.maanex.schmude.content.items.misc.FairyInABottle;
+import me.maanex.schmude.core.customcontent.CustomContent;
+import me.maanex.schmude.core.customcontent.structs.CustomItem;
 import me.maanex.schmude.core.customcontent.structs.CustomStructEntity;
 import me.maanex.schmude.core.customcontent.world.WorldEntityManager;
 
@@ -34,15 +38,18 @@ public class FairyStructEntity extends CustomStructEntity implements Listener {
 		ItemStack item = e.getPlayer().getInventory().getItemInMainHand();
 		if (item == null) return;
 		if (!item.getType().equals(Material.GLASS_BOTTLE)) return;
-		List<FairyWorldEntity> faries = WorldEntityManager.getEntitiesOfType(FairyWorldEntity.class);
-		if (faries.isEmpty()) return;
-		for (FairyWorldEntity f : faries) {
+
+		List<FairyWorldEntity> fairies = WorldEntityManager.getEntitiesOfType(FairyWorldEntity.class);
+		if (fairies.isEmpty()) return;
+		
+		for (FairyWorldEntity f : fairies) {
 			double distance = f.getLocation().distance(e.getPlayer().getEyeLocation());
-			if (distance > 5) break;
+			if (distance > 6) continue;
+			
 			Location checkpos = e.getPlayer().getEyeLocation().clone();
 			for (int dist = 0; dist < 7; dist++) {
 				checkpos.add(e.getPlayer().getLocation().getDirection());
-				if (checkpos.distance(f.getLocation()) < 1) {
+				if (checkpos.distance(f.getLocation()) < 1.2) {
 					catchFairy(e.getPlayer(), f);
 					return;
 				}
@@ -69,8 +76,9 @@ public class FairyStructEntity extends CustomStructEntity implements Listener {
 	private void catchFairy(Player p, FairyWorldEntity f) {
 		f.destroy();
 		p.getInventory().getItemInMainHand().setAmount(p.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
-		// TODO
-		// p.getInventory().addItem(FairyInABottle.getItem());
+
+		CustomItem drop = CustomContent.getCustomItemInstance(FairyInABottle.class);
+		p.getWorld().dropItem(p.getEyeLocation(), drop.asItemStack());
 	}
 
 }

@@ -19,16 +19,17 @@
 
   <repositories>
     <repository>
-      <id>spigot-repo</id>
-      <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+      <id>purpur</id>
+      <name>Purpur Maven Repo</name>
+      <url>https://repo.purpurmc.org/snapshots</url>
     </repository>
   </repositories>
 
   <dependencies>
     <dependency>
-      <groupId>org.spigotmc</groupId>
-      <artifactId>spigot-api</artifactId>
-      <version>1.18-R0.1-SNAPSHOT</version>
+      <groupId>org.purpurmc.purpur</groupId>
+      <artifactId>purpur-api</artifactId>
+      <version>1.20.2-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
