@@ -10,7 +10,7 @@ import me.maanex.schmude.core.customcontent.structs.CustomItem;
 public class DiamondScythe extends CustomItem {
   
   public DiamondScythe() {
-    super(100, "diamond_scythe", Material.DIAMOND_HOE, "Diamantsense");
+    super(100, "diamond_scythe", Material.DIAMOND_HOE);
 
     addRecipes(
       new ShapedRecipe(

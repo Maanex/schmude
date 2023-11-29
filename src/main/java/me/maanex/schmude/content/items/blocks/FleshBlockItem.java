@@ -16,8 +16,8 @@ import me.maanex.schmude.core.customcontent.structs.CustomItem;
 public class FleshBlockItem extends CustomItem implements Listener {
   
   public FleshBlockItem() {
-    super(101, "fleshblock", Material.FLINT, "Fleischblock");
-    
+    super(101, "fleshblock", Material.FLINT);
+
     addRecipes(
       new ShapedRecipe(new NamespacedKey(Main.instance, "fleshblock.1"), asItemStack())
         .shape("XXX", "XXX", "XXX")

@@ -10,7 +10,7 @@ import me.maanex.schmude.core.customcontent.structs.CustomItem;
 public class DiamondHammer extends CustomItem {
   
   public DiamondHammer() {
-    super(100, "diamond_hammer", Material.DIAMOND_PICKAXE, "Diamanthammer");
+    super(100, "diamond_hammer", Material.DIAMOND_PICKAXE);
 
     addRecipes(
       new ShapedRecipe(

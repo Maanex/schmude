@@ -10,7 +10,7 @@ import me.maanex.schmude.core.customcontent.structs.CustomItem;
 public class GoldenScythe extends CustomItem {
   
   public GoldenScythe() {
-    super(100, "golden_scythe", Material.GOLDEN_HOE, "Goldsense");
+    super(100, "golden_scythe", Material.GOLDEN_HOE);
 
     addRecipes(
       new ShapedRecipe(

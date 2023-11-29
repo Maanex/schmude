@@ -18,6 +18,7 @@ import me.maanex.schmude.content.items.hammers.GoldenHammer;
 import me.maanex.schmude.content.items.hammers.IronHammer;
 import me.maanex.schmude.content.items.hammers.NetheriteHammer;
 import me.maanex.schmude.content.items.misc.FairyInABottle;
+import me.maanex.schmude.content.items.misc.Test;
 import me.maanex.schmude.content.items.scythes.DiamondScythe;
 import me.maanex.schmude.content.items.scythes.GoldenScythe;
 import me.maanex.schmude.content.items.scythes.IronScythe;
@@ -32,6 +33,7 @@ import me.maanex.schmude.features.mobgriefing.CreeperExplosions;
 import me.maanex.schmude.features.nature.DropOnions;
 import me.maanex.schmude.features.qol.PreventTrampling;
 import me.maanex.schmude.features.qol.SlowdownAxe;
+import me.maanex.schmude.features.silly.SpinFleshBlock;
 import me.maanex.schmude.features.snowballs.HitHandler;
 import me.maanex.schmude.features.technical.ForceResoucrepack;
 import me.maanex.schmude.features.technical.Serverlist;
@@ -39,7 +41,8 @@ import me.maanex.schmude.features.technical.Serverlist;
 
 public class Main extends JavaPlugin {
 
-    public static final String RESOURCEPACK_URL = "https://cdn.discordapp.com/attachments/863176882975146034/926978152352337940/schmude-314121241.zip";
+    // public static final String RESOURCEPACK_URL = "https://cdn.discordapp.com/attachments/863176882975146034/926978152352337940/schmude-314121241.zip";
+    public static final String RESOURCEPACK_URL = "https://cdn.discordapp.com/attachments/1179411229421350912/1179411271657992265/schmude.zip?ex=6579af57&is=65673a57&hm=b39c0e1ab42ed366351d18a635e67a7331442a43119b0a0f343db4908a6f6c76&";
 
     //
 
@@ -95,16 +98,22 @@ public class Main extends JavaPlugin {
 
         /** FEATURE * Nature */
         m.registerEvents(new DropOnions(), this);
+
+        /** FEATURE * Silly */
+        m.registerEvents(new SpinFleshBlock(), this);
+
+        /** TEST * test */
+        // m.registerEvents(new Morf(), this);
     }
 
     private void registerCustomContent() {
-        CustomContent.register(new DwayneBlock());
-        CustomContent.register(new DwayneBlockItem());
-
         CustomContent.register(new FleshBlock());
         CustomContent.register(new FleshBlockItem());
         CustomContent.register(new DonerMeat());
         CustomContent.register(new Onion());
+
+        CustomContent.register(new DwayneBlock());
+        CustomContent.register(new DwayneBlockItem());
 
         CustomContent.register(new ScythesLogic());
         CustomContent.register(new GoldenScythe());
@@ -120,6 +129,8 @@ public class Main extends JavaPlugin {
 
         CustomContent.register(new FairyStructEntity());
         CustomContent.register(new FairyInABottle());
+        
+        CustomContent.register(new Test());
 
         //
 

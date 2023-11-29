@@ -13,6 +13,10 @@ import org.bukkit.inventory.RecipeChoice.ExactChoice;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.maanex.schmude.core.customcontent.CustomContent;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.Style;
+import net.kyori.adventure.text.format.TextDecoration;
 
 public abstract class CustomItem implements CustomElement {
 
@@ -41,13 +45,11 @@ public abstract class CustomItem implements CustomElement {
   private int id;
   private String name;
   private Material baseMaterial;
-  private String displayName;
 
-  public CustomItem(int id, String name, Material baseMaterial, String displayName) {
+  public CustomItem(int id, String name, Material baseMaterial) {
     this.id = id;
     this.name = name;
     this.baseMaterial = baseMaterial;
-    this.displayName = displayName;
   }
 
   //
@@ -62,21 +64,16 @@ public abstract class CustomItem implements CustomElement {
   //
 
   public ItemStack asItemStack() {
-    return asItemStack(false);
-  }
-
-  public ItemStack asItemStack(boolean noDisplayName) {
     ItemStack out = new ItemStack(this.baseMaterial);
     ItemMeta m = out.getItemMeta();
-    if (!noDisplayName)
-      m.setDisplayName("§r" + displayName);
+    m.displayName(Component.translatable(String.format("schmude.item.%s.name", this.name)).decoration(TextDecoration.ITALIC, false));
     m.setCustomModelData(id);
     out.setItemMeta(m);
     return out;
   }
 
   public RecipeChoice asRecipeChoice() {
-    return new ExactChoice(asItemStack(true));
+    return new ExactChoice(asItemStack());
   }
 
   //

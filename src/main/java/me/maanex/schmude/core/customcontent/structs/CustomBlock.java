@@ -47,7 +47,7 @@ public abstract class CustomBlock implements CustomElement {
 
   //
 
-  protected boolean isThisBlock(Block b) {
+  public boolean isThisBlock(Block b) {
     if (b == null) return false;
     if (!b.getType().equals(Material.BROWN_MUSHROOM_BLOCK)) return false;
     int bid = MushroomStates.getIdFromBrownMushroomData((MultipleFacing) b.getBlockData());
