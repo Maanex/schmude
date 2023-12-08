@@ -319,4 +319,22 @@ public class BlockUtils {
 		}
 	}
 
+	public static boolean isHammerMineable(Material material, boolean isNetheriteHammer) {
+		if (Tag.NEEDS_DIAMOND_TOOL.isTagged(material) && !isNetheriteHammer)
+			return false;
+
+		return Tag.BASE_STONE_OVERWORLD.isTagged(material)
+			|| Tag.BASE_STONE_NETHER.isTagged(material)
+			|| Tag.STONE_BRICKS.isTagged(material)
+			|| Tag.COAL_ORES.isTagged(material)
+			|| Tag.GOLD_ORES.isTagged(material)
+			|| Tag.IRON_ORES.isTagged(material)
+			|| Tag.LAPIS_ORES.isTagged(material)
+			|| Tag.COPPER_ORES.isTagged(material)
+			|| Tag.DIAMOND_ORES.isTagged(material)
+			|| Tag.EMERALD_ORES.isTagged(material)
+			|| Tag.REDSTONE_ORES.isTagged(material)
+			|| Tag.DEEPSLATE_ORE_REPLACEABLES.isTagged(material);
+	}
+
 }

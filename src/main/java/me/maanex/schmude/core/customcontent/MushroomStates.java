@@ -92,12 +92,16 @@ public class MushroomStates {
 
   public static void applyBrownMushroomToMultiface(MultipleFacing data, int index) {
     String s = BROWN_MUSHROOM_LIST_RAW[index];
-    data.setFace(BlockFace.DOWN, s.charAt(0) == '1');
-    data.setFace(BlockFace.EAST, s.charAt(1) == '1');
-    data.setFace(BlockFace.NORTH, s.charAt(2) == '1');
-    data.setFace(BlockFace.SOUTH, s.charAt(3) == '1');
-    data.setFace(BlockFace.UP, s.charAt(4) == '1');
-    data.setFace(BlockFace.WEST, s.charAt(5) == '1');
+    applyBrownMushroomToMultiface(data, s);
+  }
+
+  public static void applyBrownMushroomToMultiface(MultipleFacing data, String pattern) {
+    data.setFace(BlockFace.DOWN, pattern.charAt(0) == '1');
+    data.setFace(BlockFace.EAST, pattern.charAt(1) == '1');
+    data.setFace(BlockFace.NORTH, pattern.charAt(2) == '1');
+    data.setFace(BlockFace.SOUTH, pattern.charAt(3) == '1');
+    data.setFace(BlockFace.UP, pattern.charAt(4) == '1');
+    data.setFace(BlockFace.WEST, pattern.charAt(5) == '1');
   }
 
   public static int getIdFromBrownMushroomData(MultipleFacing data) {

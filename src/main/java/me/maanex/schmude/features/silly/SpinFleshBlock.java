@@ -32,7 +32,6 @@ public class SpinFleshBlock implements Listener {
   public void onClick(PlayerInteractEvent e) {
     if (!e.getAction().equals(Action.RIGHT_CLICK_BLOCK))
       return;
-      System.out.println(e.getPlayer().getInventory().getItemInMainHand());
     if (!e.getPlayer().getInventory().getItemInMainHand().isEmpty())
       return;
 

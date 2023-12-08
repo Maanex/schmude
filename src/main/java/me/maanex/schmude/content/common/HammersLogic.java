@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.BlockFace;
 import org.bukkit.enchantments.Enchantment;
@@ -57,7 +58,7 @@ public class HammersLogic extends CustomLogic implements Listener {
       for (int y = -dy; y <= dy; y++) {
         for (int z = -dz; z <= dz; z++) {
           Location l = origin.clone().add(x, y, z);
-          if (!BlockUtils.isStoneTypeBlock(l.getBlock().getType()) && !BlockUtils.isNaturalOreBlock(l.getBlock().getType()))
+          if (!BlockUtils.isHammerMineable(l.getBlock().getType(), i.getType().equals(Material.NETHERITE_PICKAXE)))
             continue;
 
           l.getBlock().breakNaturally(i);

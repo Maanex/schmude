@@ -73,11 +73,15 @@ public abstract class CustomBlock implements CustomElement {
   //
 
   public void placeAt(Block b, Player by) {
+    placeAt(b);
+    onPlaced(b, by);
+  }
+
+  public void placeAt(Block b) {
     b.setType(Material.BROWN_MUSHROOM_BLOCK);
-    MultipleFacing  mush = (MultipleFacing) b.getBlockData();
+    MultipleFacing mush = (MultipleFacing) b.getBlockData();
     MushroomStates.applyBrownMushroomToMultiface(mush, id);
     b.setBlockData(mush);
-    onPlaced(b, by);
   }
 
   public void attemptPlayerPlacing(PlayerInteractEvent e) {
