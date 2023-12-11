@@ -1,10 +1,5 @@
 package me.maanex.schmude;
 
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.RecipeChoice.MaterialChoice;
-import org.bukkit.inventory.SmithingTransformRecipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,6 +8,7 @@ import me.maanex.schmude.content.blocks.DwayneBlock;
 import me.maanex.schmude.content.blocks.FleshBlock;
 import me.maanex.schmude.content.blocks.TransitOffBlock;
 import me.maanex.schmude.content.blocks.TransitOnBlock;
+import me.maanex.schmude.content.blocks.XRayBlock;
 import me.maanex.schmude.content.common.HammersLogic;
 import me.maanex.schmude.content.common.ScythesLogic;
 import me.maanex.schmude.content.entities.FairyStructEntity;
@@ -20,6 +16,7 @@ import me.maanex.schmude.content.items.blocks.DwayneBlockItem;
 import me.maanex.schmude.content.items.blocks.FleshBlockItem;
 import me.maanex.schmude.content.items.blocks.TransitOffBlockItem;
 import me.maanex.schmude.content.items.blocks.TransitOnBlockItem;
+import me.maanex.schmude.content.items.blocks.XRayBlockItem;
 import me.maanex.schmude.content.items.food.DonerMeat;
 import me.maanex.schmude.content.items.food.Onion;
 import me.maanex.schmude.content.items.hammers.DiamondHammer;
@@ -128,6 +125,9 @@ public class Main extends JavaPlugin {
         CustomContent.register(new TransitOffBlockItem());
         CustomContent.register(new TransitOnBlock());
         CustomContent.register(new TransitOnBlockItem());
+
+        CustomContent.register(new XRayBlock());
+        CustomContent.register(new XRayBlockItem());
 
         CustomContent.register(new ScythesLogic());
         CustomContent.register(new GoldenScythe());
